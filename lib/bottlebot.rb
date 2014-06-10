@@ -72,6 +72,12 @@ class Bottlebot < Libfchat::Fchat
 		msglist = message['message'].split(/monsterize (.*)?/i)
 		msg = "/me shoots a beam of light at " + msglist[1] + " turning them into a " + @monsterize.deal() + "."
 	self.send('MSG',message['channel'],msg)
+	elsif message['message'].downcase =~ /^!monsterize/
+	      msg = message['character'] + ": " + @monsterize.deal()
+	self.send('MSG',message['channel'],msg)
+	elsif message['message'].downcase =~ /^!deal/
+	      msg = message['character'] + ": " + @deck.deal()
+	self.send('MSG',message['channel'],msg)
 	elsif message['message'].downcase =~ /^!draw1/
 	      msg = message['character'] + ": " + @deck.draw1()
 	self.send('MSG',message['channel'],msg)
